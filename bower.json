@@ -1,0 +1,19 @@
+{
+  "name": "GDG-Salvador-Examples",
+  "version": "0.0.0",
+  "authors": [
+    "Jonata Weber <jonataweber@gmail.com>"
+  ],
+  "description": "Exemplos utilizados durante a apresentação sobre Web Components",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.4.1"
+  }
+}
