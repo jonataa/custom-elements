@@ -1,0 +1,33 @@
+<template>
+  <a href="http://gdgsalvador.info/" target="_blank">
+    <img src="./gdg-ssa-logo.png" width="200">
+  </a>  
+</template>
+
+<script>  
+  var thisDoc = document.currentScript.ownerDocument;    
+  var template = thisDoc.querySelector('template');
+  var proto = Object.create(HTMLElement.prototype);  
+
+  proto.createdCallback = function() {    
+    var shadow = this.createShadowRoot();
+    var img = template.content.querySelector('img');
+    var size = this.getAttribute('size');
+    var type = this.getAttribute('type');
+        
+    if (size == 'small')
+      img.width = '100';
+    else if (size == 'big')
+      img.width = '400';
+
+    if (type == 'full')
+      img.src = './gdg-ssa-logo-full.png';
+
+    
+    shadow.appendChild(template.content.cloneNode(true));
+  };
+  
+  var element = document.registerElement('gdg-salvador', {
+    prototype: proto
+  });
+</script>
