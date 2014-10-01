@@ -1,33 +1,35 @@
-<template>
-  <a href="http://gdgsalvador.info/" target="_blank">
-    <img src="./gdg-ssa-logo.png" width="200">
-  </a>  
-</template>
+<link rel="import" href="../bower_components/polymer/polymer.html">
 
-<script>  
-  var thisDoc = document.currentScript.ownerDocument;    
-  var template = thisDoc.querySelector('template');
-  var proto = Object.create(HTMLElement.prototype);  
+<polymer-element name="gdg-salvador" attributes="size type cliques">
 
-  proto.createdCallback = function() {    
-    var shadow = this.createShadowRoot();
-    var img = template.content.querySelector('img');
-    var size = this.getAttribute('size');
-    var type = this.getAttribute('type');
-        
-    if (size == 'small')
-      img.width = '100';
-    else if (size == 'big')
-      img.width = '400';
+  <template>
+    <shadow></shadow>
+    <span>Eu tenho: {{cliques}} clique(s)</span><br/>
+    <a on-click="{{maisUm}}" href="{{gdgSite}}" target="_blank" >
+      <img id="logo" src="{{src}}" width="{{width}}" >      
+    </a>        
+  </template>
 
-    if (type == 'full')
-      img.src = './gdg-ssa-logo-full.png';
+  <script>
+    Polymer({  
+      gdgSite: 'http://gdgsalvador.info/',
+      src: 'img/gdg-ssa-logo.png',
+      width: 130,
+      cliques: 0,
+      maisUm: function() {
+        this.cliques++;
+      },
+      ready: function() {
+        if (this.size == 'small')
+          this.width = 100;
+        else if (this.size == 'big')
+          this.width = 400;
 
-    
-    shadow.appendChild(template.content.cloneNode(true));
-  };
-  
-  var element = document.registerElement('gdg-salvador', {
-    prototype: proto
-  });
-</script>
+        if (this.type == 'full') {
+          this.src = 'img/gdg-ssa-logo-full.png';
+        }
+      }
+    });
+  </script>
+
+</polymer-element>
