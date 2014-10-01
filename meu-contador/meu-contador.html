@@ -1,0 +1,18 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="meu-contador" attributes="pontos">
+  <template>
+    <span>Meus pontos: {{pontos}}</span>
+    <button on-click="{{maisUm}}">Add +1</button>
+  </template>
+  <script>
+  Polymer({
+    created: function() {
+      this.pontos = 0;
+    },
+    maisUm: function() {
+      this.pontos++;
+    }
+  });
+  </script>
+</polymer-element>
